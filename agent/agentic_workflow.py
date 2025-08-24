@@ -34,17 +34,17 @@ class GraphBuilder():
         graph_builder = StateGraph(MessagesState)
         graph_builder.add_node("agent", self.agent_function)
         graph_builder.add_node("tools", ToolNode(tools=self.tools))
-
         graph_builder.add_edge(START,"agent")
         graph_builder.add_conditional_edges("agent",tools_condition)
         graph_builder.add_edge("tools","agent")
         graph_builder.add_edge("agent",END)
-        self.graph = graph_builder.compile()
+        self.graph = graph_builder.compile()    
+        return self.graph
+    
         '''
         start -> agent -> if agent requires tool call (depending on question / users input) -> tools -> agent -> end
                        -> If agent do not requires tool call -> end                                                            
-        '''     
-        return self.graph
+        ''' 
 
     def __call__(self):
         return self.build_graph
