@@ -60,7 +60,7 @@ class ModelLoader(BaseModel):
         '''
 
     class Config:
-        arbitary_types_allowed = True
+        arbitrary_types_allowed = True
         '''
         arbitrary_types_allowed = True is a setting that tells Pydantic:
         “Allow me to use non-Pydantic, arbitrary Python classes as fields in my model.”
