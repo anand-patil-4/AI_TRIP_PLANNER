@@ -35,6 +35,12 @@ if submit_button and user_input.strip():
         with st.spinner("Bot is thinking..."):
             payload = {"question": user_input}
             response = requests.post(f"{BASE_URL}/query", json=payload)
+            '''
+            This sends an HTTP POST request to your backend API.
+            BASE_URL is probably something like "http://127.0.0.1:8000" or your deployed server URL.
+            The request goes to BASE_URL/query endpoint.
+            json=payload means the payload dictionary will be sent as a JSON body.
+            '''
 
         if response.status_code == 200:
             answer = response.json().get("answer", "No answer returned.")
